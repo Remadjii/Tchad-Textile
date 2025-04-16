@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmation de commande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Police et couleurs de base */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h2 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Container principal de la confirmation */
+    .confirmation {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Détails de la commande */
+    .order-details {
+      background: #f2f4f7;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-details h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .product {
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product strong {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .info {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    /* Bouton retour à l'accueil */
+    .back-btn {
+      display: inline-block;
+      background-color: #38bdf8;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #1e293b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .confirmation {
+        padding: 20px;
+      }
+
+      .product {
+        padding: 10px;
+      }
+
+      .back-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <div class="confirmation">
+      <h2>🎉 Commande confirmée !</h2>
+  
+      <div class="order-details" id="order-details">
+        <!-- Les détails seront affichés ici -->
+      </div>
+      <div style="text-align:center; margin-top: 30px;">
+          <a href="index.html" style="
+            display: inline-block;
+            background-color: #38bdf8;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+          " onmouseover="this.style.backgroundColor='#1e293b'" onmouseout="this.style.backgroundColor='#38bdf8'">
+            ⬅ Retour à l'accueil
+          </a>
+        </div>
+        
+    </div>
+    
+  
+    <script>
+      // Récupérer toutes les commandes dans localStorage
+      const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      // Prendre la dernière commande
+      const order = allOrders.slice(-1)[0];
+  
+      if (!order) {
+        document.getElementById("order-details").innerHTML = "<p>Aucune commande trouvée.</p>";
+      } else {
+        let html = `<h3>Produits commandés :</h3>`;
+        order.items.forEach(item => {
+          html += `
+            <div class="product">
+              <strong>${item.name}</strong><br>
+              Prix unitaire: €${item.price.toFixed(2)}<br>
+              Quantité: ${item.quantity || 1}<br>
+              Sous-total: €${(item.price * (item.quantity || 1)).toFixed(2)}
+            </div>
+          `;
+        });
+  
+        html += `
+          <p class="info">Région de livraison : ${order.region}</p>
+          <p class="info">Méthode de paiement : ${order.payment}</p>
+          <p class="info">Total à payer : €${order.total.toFixed(2)}</p>
+        `;
+  
+        document.getElementById("order-details").innerHTML = html;
+      }
+    </script>
+  
+  </body>
+  
+</html>

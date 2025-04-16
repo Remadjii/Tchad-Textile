@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - CHAD TEXTILE</title>
+  <link href="textile44" rel="stylesheet">
+  <link href="textile44.jpg" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1e293b;
+      --accent-color: #38bdf8;
+      --bg-light: #f5f5f5;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-color);
+      left: 0;
+      bottom: -3px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .blog-section h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--primary-color);
+    }
+    
+    .banner {
+        background-image: url('textile44.jpg');
+        background-size:cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(182, 55, 69);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .blog-section h2{
+        font-size: 1.5rem;
+      }
+      .banner{
+        font-size: 2.5rem;
+        padding: 30px;
+      }
+    }
+
+    .blog-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .article {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .article img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .article-content {
+      padding: 20px;
+    }
+
+    .article-content h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .article-content p {
+      color: #555;
+    }
+
+    .newsletter {
+      background: var(--accent-color);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .newsletter h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .newsletter input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 25px;
+      width: 250px;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    .newsletter button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .newsletter button:hover {
+      background-color: #0f172a;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">CHAD TEXTILE</div>
+    <div class="mobile-menu-toggle">☰</div>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="about.html">À propos</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="gallery.html">Galerie</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    Bienvenue sur notre Blog Textile
+  </div>
+
+  <section class="blog-section">
+    <h2>Actualités et Astuces Textile</h2>
+    <div class="articles">
+      <a href="#" class="article">
+        <img src="textile44.jpg" alt="Article textile">
+        <div class="article-content">
+          <h3>Top 5 des tendances en tissu 2025</h3>
+          <p>Découvrez les motifs et textures à la mode cette année, parfaits pour vos tenues et décorations intérieures.</p>
+        </div>
+      </a>
+      <a href="#" class="article">
+        <img src="textile44.jpg" alt="Coloris tissu">
+        <div class="article-content">
+          <h3>Comment choisir la bonne couleur de tissu</h3>
+          <p>Guide pour associer les bonnes couleurs à votre style personnel ou à votre projet de couture.</p>
+        </div>
+      </a>
+      <a href="#" class="article">
+        <img src="textile44.jpg" alt="Couture">
+        <div class="article-content">
+          <h3>Conseils de couture pour débutants</h3>
+          <p>Vous débutez ? Voici les essentiels pour réussir vos premiers projets avec nos tissus de qualité.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h3>📬 Abonnez-vous à notre newsletter</h3>
+    <form>
+      <input type="email" placeholder="Votre adresse e-mail" required>
+      <button type="submit">S'abonner</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 CHAD TEXTILE. Tous droits réservés.</p>
+    <p>Suivez-nous sur les réseaux sociaux - 
+      <a href="https://www.facebook.com/share/1BVx7GKMqq/"><i class="fab fa-facebook"></i> Facebook</a> | 
+      <a href="https://www.instagram.com/chadtextile?igsh=Njh5eXRjbGZudnNl"><i class="fab fa-instagram"></i> Instagram</a> | 
+      <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </p>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

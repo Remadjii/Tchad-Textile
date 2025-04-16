@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Validation de la commande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Finaliser la commande</h2>
+    <form id="checkout-form">
+      <!-- Informations personnelles -->
+      <div class="form-group">
+        <label for="full-name">Nom complet</label>
+        <input type="text" id="full-name" required placeholder="Votre nom complet">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Votre email">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Numéro de téléphone</label>
+        <input type="tel" id="phone" required placeholder="Votre numéro de téléphone">
+      </div>
+
+      <!-- Informations de livraison -->
+      <div class="form-group">
+        <label for="address">Adresse de livraison</label>
+        <input type="text" id="address" required placeholder="Votre adresse de livraison">
+      </div>
+
+      <div class="form-group">
+        <label for="region">Région de livraison</label>
+        <select id="region" required>
+          <option value="">-- Sélectionnez une région --</option>
+          <option value="N'Djamena">N'Djamena</option>
+          <option value="Moundou">Moundou</option>
+          <option value="Sarh">Sarh</option>
+          <option value="Abéché">Abéché</option>
+          <option value="Mongo">Mongo</option>
+          <option value="Pala">Pala</option>
+        </select>
+      </div>
+
+      <!-- Informations de paiement -->
+      <div class="form-group">
+        <label for="payment">Méthode de paiement</label>
+        <select id="payment" required>
+          <option value="">-- Sélectionnez une méthode de paiement --</option>
+          <option value="Paiement à la livraison">Paiement à la livraison</option>
+          <option value="Mobile Money">Mobile Money</option>
+        </select>
+      </div>
+
+      <button type="submit">Valider la commande</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("checkout-form");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+    
+      // Récupérer les valeurs des champs du formulaire
+      const fullName = document.getElementById("full-name").value; // Nom complet
+      const email = document.getElementById("email").value; // Email
+      const phone = document.getElementById("phone").value; // Numéro de téléphone
+      const address = document.getElementById("address").value; // Adresse
+      const region = document.getElementById("region").value; // Région
+      const payment = document.getElementById("payment").value; // Méthode de paiement
+      
+      // Récupérer le panier depuis localStorage
+      const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+      
+      // Calculer le total de la commande
+      const total = cart.reduce((acc, item) => acc + (item.price * (item.quantity || 1)), 0);
+      
+      // Créer un ID unique basé sur la date (timestamp)
+      const orderId = Date.now();  // Utilisation du timestamp comme ID unique
+      
+      // Format de la date de la commande
+      const orderDate = new Date().toLocaleString(); // Format lisible
+      
+      // Ajouter les informations dans l'objet de commande
+      const orderData = {
+        id: orderId,
+        date: orderDate,
+        fullName,  // Ajouter le nom complet ici
+        email,     // Ajouter l'email ici
+        phone,     // Ajouter le téléphone ici
+        address,   // Ajouter l'adresse ici
+        region,    // Ajouter la région ici
+        payment,   // Ajouter la méthode de paiement ici
+        items: cart, // Liste des articles du panier
+        total: total // Total de la commande
+      };
+    
+      // Récupérer toutes les commandes existantes ou créer un tableau vide
+      const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      
+      // Ajouter la nouvelle commande au tableau
+      allOrders.push(orderData);
+      
+      // Sauvegarder dans localStorage
+      localStorage.setItem("orders", JSON.stringify(allOrders));
+    
+      // Vider le panier après la commande
+      localStorage.removeItem("cartItems");
+    
+      // Rediriger vers une page de confirmation
+      window.location.href = "confirmation.html";
+    });
+    
+  
+    
+  </script>
+
+</body>
+</html>
