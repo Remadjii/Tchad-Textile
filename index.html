@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+lyjuuuuuuuuuuuuuu4deeeee87<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -238,9 +238,10 @@
 }
 
 .product-card {
-    background: white;
+    background:white;
     border-radius: 15px;
     overflow: hidden;
+    width: 100%;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s;
 }
@@ -257,8 +258,9 @@
 
 .product-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    display: block;
 }
 
 .quick-view {
@@ -583,7 +585,216 @@
   }
 }
 
+#searchInput {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 20px auto;
+  display: block;
+}
 
+
+/* Conteneur des couleurs */
+.color-options {
+  display: flex;
+  gap: 8px;
+  margin: 5px 0;
+  flex-wrap: wrap;
+}
+
+/* Boutons de couleur */
+.color-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: border 0.2s ease;
+}
+
+/* Bouton sélectionné */
+.color-btn.selected {
+  border: 3px solid black;
+}
+
+
+
+
+.color {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 5px;
+  display: inline-block;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.color.selected {
+  border: 2px solid black;
+}
+
+.color.on-demand {
+  opacity: 0.5;
+  border-style: dashed;
+}
+
+
+
+
+
+
+
+.product-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+
+.quick-view {
+    margin-top: 8px;
+    background-color: #000;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.color-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.color-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.display-color {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #444;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.sizes select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.add-to-cart {
+    margin-top: 15px;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+}
+
+
+
+.product-card.hide-price-size .price,
+.product-card.hide-price-size .sizes {
+    display: none;
+}
+
+
+
+
+
+.product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-details {
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.modal-description {
+  font-size: 1em;
+  color: #666;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+.close-modal:hover {
+  color: red;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+.item { display: inline-block; padding: 10px; margin: 5px; background-color: #eee; }
+    .filter-btn.active { font-weight: bold; }
 
 </style>
 </head>
@@ -605,6 +816,7 @@
         </div>
         <div class="mobile-menu-toggle">☰</div>
     </nav>
+
     <!-- HERO SECTION WITH VIDEO BACKGROUND -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
@@ -619,26 +831,26 @@
     <main class="products-page">
         <!-- En-tête avec filtre -->
         <div class="page-header">
-            <h1>Collection Tissu</h1>
+            <h1>Collection de  Tissus</h1>
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="men">Tissues</button>
-                <button class="filter-btn" data-filter="women">Filtex</button>
+                <button class="filter-btn" data-filter="men">Tissus</button>
+                <button class="filter-btn" data-filter="unisex">pré-cousu</button>
+                <button class="filter-btn" data-filter="tous">Modèles</button>
             </div>
         </div>
-		
         <!-- Grille de produits -->
-        
                 <div class="product-grid">
             <!-- Produit 1 -->
             <div class="product-card men">
                 <div class="product-image">
-                    <img src="textile12.jpg" alt="T-Shirt Basic Noir">
+                    <img src="textile12.jpg" alt="Tissu bleu>
+                    <p class="description">Tissu noir en coton </p>
                     <button class="quick-view">Aperçu rapide</button>
                 </div>
                 <div class="product-info">
                     <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
+                 <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                     <div class="sizes">
                         <select>
                             <option>mètre</option>
@@ -651,12 +863,14 @@
 
             <div class="product-card men">
                 <div class="product-image">
-                    <img src="textile13.jpg" alt="T-Shirt Basic Noir">
+                    <img src="textile13.jpg" alt=" tissu  vert">
+                    <p class="description">Tissu vert en coton </p>
                     <button class="quick-view">Aperçu rapide</button>
                 </div>
                 <div class="product-info">
                     <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
+             <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
+
                     <div class="sizes">
                         <select>
                             <option>mètre</option>
@@ -668,12 +882,13 @@
             </div>
             <div class="product-card men">
                 <div class="product-image">
-                    <img src="textile14.jpg" alt="T-Shirt Basic Noir">
+                    <img src="textile14.jpg" alt="Tissu rouge bordeau">
+                    <p class="description">Tissu rouge bordeau en coton </p>
                     <button class="quick-view">Aperçu rapide</button>
                 </div>
                 <div class="product-info">
                     <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
+                   <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                     <div class="sizes">
                         <select>
                             <option>mètre</option>
@@ -685,12 +900,12 @@
             </div>
             <div class="product-card men">
                 <div class="product-image">
-                    <img src="textile22.jpg" alt="T-Shirt Basic Noir">
+                    <img src="textile22.jpg" alt="tissu blanc casse">
                     <button class="quick-view">Aperçu rapide</button>
                 </div>
                 <div class="product-info">
                     <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
+                  <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                     <div class="sizes">
                         <select>
                             <option>mètre</option>
@@ -702,12 +917,12 @@
             </div>
             <div class="product-card men">
                 <div class="product-image">
-                    <img src="textile23.jpg" alt="T-Shirt Basic Noir">
+                    <img src="textile26.jpg" alt="tissu caki">
                     <button class="quick-view">Aperçu rapide</button>
                 </div>
                 <div class="product-info">
                     <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
+                   <div class="price" data-metre-price="9000" data-yard-price="7500">9000 Fcfa</div>
                     <div class="sizes">
                         <select>
                             <option>mètre</option>
@@ -717,34 +932,36 @@
                     <button class="add-to-cart">Ajouter au panier</button>
                 </div>
             </div>
-            <div class="product-card men">
-                <div class="product-image">
-                    <img src="textile24.jpg" alt="T-Shirt Basic Noir">
-                    <button class="quick-view">Aperçu rapide</button>
-                </div>
-                <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                        <select>
-                            <option>mètre</option>
-                            <option>yard</option>
-                        </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>
+         <div class="product-card men">
+  <div class="product-image">
+    <img src="textile27.jpg" alt="tissu bleu claire">
+  </div>
+
+  <div class="product-info">
+    <h3>Tissu</h3>
+  <div class="price" data-metre-price="9000" data-yard-price="7500">9000 Fcfa</div>
+    <div class="sizes">
+      <select>
+        <option>mètre</option>
+        <option>yard</option>
+      </select>
+    </div>
+
+    <button class="add-to-cart">Ajouter au panier</button>
+  </div>
+</div>
+
 
             <!-- Répéter la structure pour d'autres produits -->
             <!-- Produit 2 -->
-                <div class="product-card women">
+                <div class="product-card men">
                     <div class="product-image">
-                        <img src="textile26.jpg" alt="T-Shirt Basic Noir">
+                        <img src="textile28.jpg" alt="tissu blanc">
                         <button class="quick-view">Aperçu rapide</button>
                     </div>
                     <div class="product-info">
-                        <h3>Filtex</h3>
-                        <div class="price" data-metre-price="9000">9000Fcfa</div>
+                        <h3>Tissu</h3>
+                    <div class="price" data-metre-price="9000" data-yard-price="7500">9000 Fcfa</div>
                         <div class="sizes">
                             <select>
                                 <option>mètre</option>
@@ -754,15 +971,15 @@
                         <button class="add-to-cart">Ajouter au panier</button>
                     </div>
                 </div>
-            <div class="product-card women">
-                <div class="product-card women">
+            <div class="product-card men">
+                <div class="product-card men">
                     <div class="product-image">
-                        <img src="textile27.jpg" alt="T-Shirt Basic Noir">
+                        <img src="textile31.jpg" alt="T-Shirt Basic Noir">
                         <button class="quick-view">Aperçu rapide</button>
                     </div>
                     <div class="product-info">
-                        <h3>Filtex</h3>
-                        <div class="price" data-metre-price="9000">9000Fcfa</div>
+                        <h3>Tissu</h3>
+                     <div class="price" data-metre-price="9000" data-yard-price="7500">9000 Fcfa</div>
                         <div class="sizes">
                             <select>
                                 <option>mètre</option>
@@ -773,14 +990,14 @@
                     </div>
                 </div>
             </div>
-                <div class="product-card women">
+                <div class="product-card men">
                     <div class="product-image">
-                        <img src="textile28.jpg" alt="T-Shirt Basic Noir">
+                        <img src="textile33.jpg" alt="T-Shirt Basic Noir">
                         <button class="quick-view">Aperçu rapide</button>
                     </div>
                     <div class="product-info">
-                        <h3>Filtex</h3>
-                        <div class="price" data-metre-price="9000">9000Fcfa</div>
+                        <h3>Tissu</h3>
+                        <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                         <div class="sizes">
                             <select>
                                 <option>mètre</option>
@@ -790,14 +1007,14 @@
                         <button class="add-to-cart">Ajouter au panier</button>
                     </div>
                 </div>
-                <div class="product-card women">
+                <div class="product-card men">
                     <div class="product-image">
-                        <img src="textile30.jpg" alt="T-Shirt Basic Noir">
+                        <img src="textile36.jpg" alt="T-Shirt Basic Noir">
                         <button class="quick-view">Aperçu rapide</button>
                     </div>
                     <div class="product-info">
-                        <h3>Filtex</h3>
-                        <div class="price" data-metre-price="9000">9000Fcfa</div>
+                        <h3>Tissu</h3>
+                        <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                         <div class="sizes">
                             <select>
                                 <option>mètre</option>
@@ -807,14 +1024,14 @@
                         <button class="add-to-cart">Ajouter au panier</button>
                     </div>
                 </div>
-                <div class="product-card women">
+                <div class="product-card men">
                     <div class="product-image">
-                        <img src="textile31.jpg" alt="T-Shirt Basic Noir">
+                        <img src="textile37.jpg" alt="T-Shirt Basic Noir">
                         <button class="quick-view">Aperçu rapide</button>
                     </div>
                     <div class="product-info">
-                        <h3>Filtex</h3>
-                        <div class="price" data-metre-price="9000">9000Fcfa</div>
+                        <h3>Tissu</h3>
+                        <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                         <div class="sizes">
                             <select>
                                 <option>mètre</option>
@@ -824,14 +1041,14 @@
                         <button class="add-to-cart">Ajouter au panier</button>
                     </div>
                 </div>
-                <div class="product-card women">
+                <div class="product-card men">
                     <div class="product-image">
-                        <img src="textile32.jpg" alt="T-Shirt Basic Noir">
+                        <img src="textile39.jpg" alt="T-Shirt Basic Noir">
                         <button class="quick-view">Aperçu rapide</button>
                     </div>
                     <div class="product-info">
-                        <h3>Filtex</h3>
-                        <div class="price" data-metre-price="9000">9000Fcfa</div>
+                        <h3>Tissu</h3>
+                      <div class="price" data-metre-price="10000" data-yard-price="8500">10000 Fcfa</div>
                         <div class="sizes">
                             <select>
                                 <option>mètre</option>
@@ -841,136 +1058,274 @@
                         <button class="add-to-cart">Ajouter au panier</button>
                     </div>
                 </div>
-            <div class="product-card men">
-                <div class="product-image">
-                    <img src="textile33.jpg" alt="T-Shirt Basic Noir">
-                    <button class="quick-view">Aperçu rapide</button>
                 </div>
-                <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                            <select>
-                                <option>mètre</option>
-                                <option>yard</option>
-                            </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>
 
-            <div class="product-card men">
+                
+          <div class="product-grid">
+ <div class="product-card unisex">
                 <div class="product-image">
-                    <img src="textile39.jpg" alt="T-Shirt Basic Noir">
+                    <img src="52.jpg" alt="T-Shirt Basic Noir">
                     <button class="quick-view">Aperçu rapide</button>
                 </div>
                 <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                            <select>
-                                <option>mètre</option>
-                                <option>yard</option>
-                            </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>           
-            <div class="product-card men">
-                <div class="product-image">
-                    <img src="textile38.jpg" alt="T-Shirt Basic Noir">
-                    <button class="quick-view">Aperçu rapide</button>
-                </div>
-                <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                            <select>
-                                <option>mètre</option>
-                                <option>yard</option>
-                            </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="product-card men">
-                <div class="product-image">
-                    <img src="textile37.jpg" alt="T-Shirt Basic Noir">
-                    <button class="quick-view">Aperçu rapide</button>
-                </div>
-                <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                            <select>
-                                <option>mètre</option>
-                                <option>yard</option>
-                            </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="product-card men">
-                <div class="product-image">
-                    <img src="textile35.jpg" alt="T-Shirt Basic Noir">
-                    <button class="quick-view">Aperçu rapide</button>
-                </div>
-                <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                            <select>
-                                <option>mètre</option>
-                                <option>yard</option>
-                            </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>
-            <div class="product-card men">
-                <div class="product-image">
-                    <img src="textile34.jpg" alt="T-Shirt Basic Noir">
-                    <button class="quick-view">Aperçu rapide</button>
-                </div>
-                <div class="product-info">
-                    <h3>Tissu</h3>
-                    <div class="price" data-metre-price="10000">10000Fcfa</div>
-                    <div class="sizes">
-                            <select>
-                                <option>mètre</option>
-                                <option>yard</option>
-                            </select>
-                    </div>
-                    <button class="add-to-cart">Ajouter au panier</button>
-                </div>
-            </div>
+                    <h3>pré-cousu</h3>
+                    
+    <div class="color-picker">
+            <label class="color-label">Choisir une couleur :</label>
+            <select class="color-select">
+                <option value="">-- Sélectionner --</option>
+                <option value="Rouge">Rouge</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Blanc">Blanc</option>
+                <option value="Vert">Vert</option>
+                <option value="Orange">Orange</option>
+                <option value="Marron">Marron</option>
+                <option value="Gris">Gris</option>
+                <option value="Noir">Noir</option>
+            </select>
+            <div class="display-color"></div>
         </div>
-    </main>
 
-<!-- MODAL APERÇU RAPIDE -->
-    <div class="product-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-image">
-                <img src="textile1.jpg" alt="T-Shirt détaillé">
-            </div>
-            <div class="modal-details">
-                <h2>Tissu</h2>
-                <p class="price" data-metre-price="10000">10000Fcfa</p>
-                <p class="description">Disponible en plusieurs couleurs.</p>
-                <div class="size-selector">
-                    <label>Taille :</label>
-                    <div class="sizes">
-                        <select>
-                            <option>Mètre</option>
-                            <option>Yard</option>
-                        </select>
-                    </div>                    
-                </div>
-                <button class="add-to-cart">Ajouter au panier</button>
-            </div>
+        <div class="price">125000 Fcfa</div>
+
+        <div class="sizes">
+             <select class="size-select">
+        <option value="">-- Sélectionner --</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
         </div>
+
+        <button class="add-to-cart">Ajouter au panier</button>
     </div>
+</div>
+
+            <div class="product-card unisex">
+    <div class="product-image">
+        <img src="53.jpg" alt="T-Shirt Basic Noir">
+        <button class="quick-view">Aperçu rapide</button>
+    </div>
+
+    <div class="product-info">
+        <h3>pré-cousu</h3>
+
+        <div class="color-picker">
+            <label class="color-label">Choisir une couleur :</label>
+            <select class="color-select">
+                <option value="">-- Sélectionner --</option>
+                <option value="Rouge">Rouge</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Blanc">Blanc</option>
+                <option value="Vert">Vert</option>
+                <option value="Orange">Orange</option>
+                <option value="Marron">Marron</option>
+                <option value="Gris">Gris</option>
+                <option value="Noir">Noir</option>
+            </select>
+            <div class="display-color"></div>
+        </div>
+
+        <div class="price">125000 Fcfa</div>
+
+        <div class="sizes">
+             <select class="size-select">
+        <option value="">-- Sélectionner --</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+        </div>
+
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+
+
+             <div class="product-card unisex">
+                <div class="product-image">
+                    <img src="56.jpg" alt="T-Shirt Basic Noir">
+                    <button class="quick-view">Aperçu rapide</button>
+                </div>
+                <div class="product-info">
+                    <h3>pré-cousu</h3>
+     <div class="color-picker">
+            <label class="color-label">Choisir une couleur :</label>
+            <select class="color-select">
+                <option value="">-- Sélectionner --</option>
+                <option value="Rouge">Rouge</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Blanc">Blanc</option>
+                <option value="Vert">Vert</option>
+                <option value="Orange">Orange</option>
+                <option value="Marron">Marron</option>
+                <option value="Gris">Gris</option>
+                <option value="Noir">Noir</option>
+            </select>
+            <div class="display-color"></div>
+        </div>
+
+        <div class="price">125000 Fcfa</div>
+
+        <div class="sizes">
+             <select class="size-select">
+        <option value="">-- Sélectionner --</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+        </div>
+
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+            <div class="product-card unisex">
+            <div class="product-image">
+            <img src="54.jpg" alt="Nom du tissu" class="product-img">
+            <button class="quick-view">Aperçu rapide</button>
+         </div>
+         <div class="product-info">
+         <h3>pré-cousu</h3>
+   <div class="color-picker">
+            <label class="color-label">Choisir une couleur :</label>
+            <select class="color-select">
+                <option value="">-- Sélectionner --</option>
+                <option value="Rouge">Rouge</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Blanc">Blanc</option>
+                <option value="Vert">Vert</option>
+                <option value="Orange">Orange</option>
+                <option value="Marron">Marron</option>
+                <option value="Gris">Gris</option>
+                <option value="Noir">Noir</option>
+            </select>
+            <div class="display-color"></div>
+        </div>
+
+        <div class="price">125000 Fcfa</div>
+
+        <div class="sizes">
+             <select class="size-select">
+        <option value="">-- Sélectionner --</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+        </div>
+
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+  </div>
+         
+
+           <div class="product-grid">
+    <div class="product-card tous hide-price-size">
+        <div class="product-image">
+            <img src="modele.jpg" alt="T-Shirt Basic Noir">
+            <button class="quick-view">Aperçu rapide</button>
+    </div>
+    <div class="product-info">
+        <h3>Modèle</h3>
+        <div class="price" data-metre-price="10000">10000Fcfa</div>
+        <div class="sizes">
+            <select>
+                <option>mètre</option>
+                <option>yard</option>
+            </select>
+        </div>
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+
+     <div class="product-card tous hide-price-size">
+                <div class="product-image">
+                    <img src="modele1.jpg" alt="T-Shirt Basic Noir">
+                    <button class="quick-view">Aperçu rapide</button>
+    </div>
+    <div class="product-info">
+        <h3>Modèle</h3>
+        <div class="price" data-metre-price="10000">10000Fcfa</div>
+        <div class="sizes">
+            <select>
+                <option>mètre</option>
+                <option>yard</option>
+            </select>
+        </div>
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+
+           <div class="product-card tous hide-price-size">
+    <div class="product-image">
+        <img src="modele4.jpg" alt="T-Shirt Basic Noir">
+        <button class="quick-view">Aperçu rapide</button>
+    </div>
+    <div class="product-info">
+        <h3>Modèle</h3>
+        <div class="price" data-metre-price="10000">10000Fcfa</div>
+        <div class="sizes">
+            <select>
+                <option>mètre</option>
+                <option>yard</option>
+            </select>
+        </div>
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+
+
+<div class="product-card tous hide-price-size">
+                <div class="product-image">
+                    <img src="modele5.jpg" alt="T-Shirt Basic Noir">
+                    <button class="quick-view">Aperçu rapide</button>
+    </div>
+    <div class="product-info">
+        <h3>Modèle</h3>
+        <div class="price" data-metre-price="10000">10000Fcfa</div>
+        <div class="sizes">
+            <select>
+                <option>mètre</option>
+                <option>yard</option>
+            </select>
+        </div>
+        <button class="add-to-cart">Ajouter au panier</button>
+    </div>
+</div>
+                    </div>
+    </main>
+<!-- MODAL Aperçu rapide -->
+<div class="product-modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+
+    <div class="modal-image">
+      <img src="" alt="Produit détaillé">
+    </div>
+
+    <div class="modal-details">
+      <h2 class="modal-title"></h2>
+      <p class="modal-description"></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
       <footer class="footer">
         <div class="footer-container">
           <div class="footer-section about">
@@ -1022,6 +1377,7 @@
 
 
 <script>
+
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.querySelector('.product-modal');
     const closeModal = document.querySelector('.close-modal');
@@ -1029,48 +1385,61 @@ document.addEventListener("DOMContentLoaded", function () {
     let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
     cartCountElement.textContent = cart.length;
 
-    // Fonction pour mettre à jour le prix selon la taille
+   
+
     function updatePrice(select, priceElement) {
-        let currentPrice = priceElement.getAttribute("data-metre-price");
-        if (!currentPrice) return;
-        currentPrice = parseFloat(currentPrice);
+    const metrePrice = priceElement.getAttribute("data-metre-price");
+    const yardPrice = priceElement.getAttribute("data-yard-price");
 
-        if (select.value.toLowerCase() === "yard") {
-            if (currentPrice === 10000) {
-                priceElement.textContent = "8500Fcfa";
-            } else if (currentPrice === 9000) {
-                priceElement.textContent = "7500Fcfa";
-            } else {
-                priceElement.textContent = (currentPrice - 1500) + "Fcfa";
-            }
-        } else {
-            priceElement.textContent = currentPrice + "Fcfa";
-        }
+    if (!metrePrice || !yardPrice) return;
+
+    const selectedUnit = select.value.toLowerCase();
+
+    if (selectedUnit === "yard") {
+        priceElement.textContent = yardPrice + " Fcfa";
+    } else {
+        priceElement.textContent = metrePrice + " Fcfa";
     }
+}
 
-    // Mise à jour des prix dans les cartes produit au changement de taille
+document.querySelectorAll('.product-card').forEach(card => {
+    const unitSelect = card.querySelector("select");
+    const priceElement = card.querySelector(".price");
+
+    if (unitSelect && priceElement) {
+        unitSelect.addEventListener("change", function () {
+            updatePrice(this, priceElement);
+        });
+
+        // Mise à jour initiale
+        updatePrice(unitSelect, priceElement);
+    }
+});
+
+
+    // GESTION DES COULEURS : clic sur un bouton couleur dans la carte produit
     document.querySelectorAll('.product-card').forEach(card => {
-        const sizeSelect = card.querySelector("select");
-        const priceElement = card.querySelector(".price");
+        const couleurDiv = card.querySelector('.selected-color');
+        const colorButtons = card.querySelectorAll('.color-btn');
 
-        if (sizeSelect && priceElement) {
-            sizeSelect.addEventListener("change", function () {
-                updatePrice(this, priceElement);
+        colorButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedColor = btn.getAttribute('data-color');
+                if (couleurDiv) {
+                    couleurDiv.textContent = selectedColor;
+                    couleurDiv.style.display = 'block'; // afficher la couleur choisie
+                }
             });
-
-            // Mise à jour initiale
-            updatePrice(sizeSelect, priceElement);
-        }
+        });
     });
 
-    // Ouverture du modal
+    // Ouverture du modal produit (inchangé)
     document.querySelectorAll('.quick-view').forEach(btn => {
         btn.addEventListener('click', () => {
             const card = btn.closest('.product-card');
             const category = card.classList.contains('men') ? 'men' :
-                            card.classList.contains('women') ? 'women' : 'unisex';
+                card.classList.contains('women') ? 'women' : 'unisex';
 
-            // Remplir le modal
             const name = card.querySelector('h3').textContent;
             const image = card.querySelector('img').getAttribute('src');
             const priceElement = card.querySelector('.price');
@@ -1101,108 +1470,88 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Fermer le modal
     closeModal.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });
 
-    // Ajouter au panier depuis le modal
-    modal.querySelector(".add-to-cart").addEventListener("click", function () {
-        const name = modal.querySelector('h2').textContent;
-        const priceText = modal.querySelector('.price').textContent.replace('Fcfa', '').trim();
+    document.querySelectorAll('.product-card .add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.product-card');
+        const name = card.querySelector('h3').textContent;
+        const priceText = card.querySelector('.price').textContent.replace('Fcfa', '').trim();
         const price = parseFloat(priceText);
-        const size = modal.querySelector('.sizes select').value;
-        const image = modal.querySelector('img').getAttribute('src');
+        const sizeSelect = card.querySelector("select.size-select");
+        const size = sizeSelect ? sizeSelect.value : "Unique";
+        const colorSelect = card.querySelector('.color-select');
+        const couleur = colorSelect ? colorSelect.value || "Non spécifiée" : "Non spécifiée";
+        const image = card.querySelector('img').getAttribute('src');
 
-        const item = {
-            name,
-            price,
-            size,
-            image,
-            quantity: 1
-        };
+        let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        cart.push(item);
+        const item = { name, price, size, image, couleur, quantity: 1 };
+
+        const existingIndex = cart.findIndex(cartItem =>
+            cartItem.name === item.name &&
+            cartItem.couleur === item.couleur &&
+            cartItem.size === item.size
+        );
+
+        if (existingIndex > -1) {
+            cart[existingIndex].quantity += 1;
+        } else {
+            cart.push(item);
+        }
+
         localStorage.setItem("cartItems", JSON.stringify(cart));
         cartCountElement.textContent = cart.length;
 
         alert("Produit ajouté au panier !");
-        modal.style.display = 'none';
     });
+});
 
-    // Ajouter au panier depuis la carte produit
-    document.querySelectorAll('.product-card .add-to-cart').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const card = btn.closest('.product-card');
-            const name = card.querySelector('h3').textContent;
-            const priceText = card.querySelector('.price').textContent.replace('Fcfa', '').trim();
-            const price = parseFloat(priceText);
-            const sizeSelect = card.querySelector("select");
-            const size = sizeSelect ? sizeSelect.value : "Unique";
-            const image = card.querySelector('img').getAttribute('src');
 
-            const item = {
-                name,
-                price,
-                size,
-                image,
-                quantity: 1
-            };
+    // Filtrage, menu mobile, etc. inchangés...
 
-            cart.push(item);
-            localStorage.setItem("cartItems", JSON.stringify(cart));
-            cartCountElement.textContent = cart.length;
-
-            alert("Produit ajouté au panier !");
-        });
-    });
-
-    // Gestion du filtrage des produits
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const products = document.querySelectorAll('.product-card');
+    const product = document.querySelectorAll('.product-card');
 
-    // Fonction pour afficher tous les produits
     function showAllProducts() {
         products.forEach(product => {
             product.style.display = 'block';
         });
     }
 
-    // Fonction pour afficher les produits filtrés par catégorie
     function filterProducts(category) {
         products.forEach(product => {
             if (category === 'all') {
-                product.style.display = 'block';  // Afficher tous les produits
+                product.style.display = 'block';
             } else if (product.classList.contains(category)) {
-                product.style.display = 'block';  // Afficher les produits correspondant à la catégorie
+                product.style.display = 'block';
             } else {
-                product.style.display = 'none';  // Masquer les produits qui ne correspondent pas à la catégorie
+                product.style.display = 'none';
             }
         });
     }
 
-    // Fonction pour gérer l'activation des boutons
     function activateButton(selectedButton) {
-        filterButtons.forEach(button => button.classList.remove('active'));  // Retirer la classe active de tous les boutons
-        selectedButton.classList.add('active');  // Ajouter la classe active au bouton sélectionné
+        filterButtons.forEach(button => button.classList.remove('active'));
+        selectedButton.classList.add('active');
     }
 
-    // Gestion des clics sur les boutons de filtrage
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filterCategory = this.getAttribute('data-filter');  // Récupérer la catégorie de filtrage
-
-            filterProducts(filterCategory);  // Filtrer les produits en fonction de la catégorie
-            activateButton(this);  // Activer le bouton sélectionné
+        button.addEventListener('click', function () {
+            const filterCategory = this.getAttribute('data-filter');
+            filterProducts(filterCategory);
+            activateButton(this);
         });
     });
 
-    // Par défaut, afficher tous les produits et activer le bouton "Tous"
+
     showAllProducts();
     activateButton(document.querySelector('.filter-btn[data-filter="all"]'));
 
-    // Gestion du menu mobile
+    // Menu mobile
     const toggleBtn = document.querySelector(".mobile-menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
@@ -1210,19 +1559,106 @@ document.addEventListener("DOMContentLoaded", function () {
         navLinks.classList.toggle("active");
     });
 
-    // Fermer le menu quand on clique sur un lien (optionnel)
     document.querySelectorAll(".nav-links a").forEach(link => {
         link.addEventListener("click", () => {
             navLinks.classList.remove("active");
         });
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const productCards = document.querySelectorAll('.product-card');
+
+    productCards.forEach(function (card) {
+        // Gérer l'affichage de la couleur choisie (ton code)
+        const colorSelect = card.querySelector('.color-select');
+        const displayColor = card.querySelector('.display-color');
+
+        colorSelect.addEventListener('change', function () {
+            if (this.value) {
+                displayColor.textContent = "Couleur choisie : " + this.value;
+            } else {
+                displayColor.textContent = "";
+            }
+        });
+
+        // Gérer l'ajout au panier
+        const addToCartBtn = card.querySelector('.add-to-cart');
+
+        addToCartBtn.addEventListener('click', function () {
+            const selectedColor = card.querySelector('.color-select').value || "Non spécifiée";
+            const selectedSize = card.querySelector('.size-select').value || "Non spécifiée";
+            const productName = card.querySelector('h3').textContent.trim();
+            const price = card.querySelector('.price').textContent.trim();
+
+            alert(
+                "Produit : " + productName + "\n" +
+                "Taille : " + selectedSize + "\n" +
+                "Couleur : " + selectedColor + "\n" +
+                "Prix : " + price
+            );
+
+            // Ici tu peux ajouter la logique pour stocker dans panier, envoyer au backend, etc.
+        });
+    });
+});
+
+
+document.querySelectorAll('.quick-view').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    const modal = document.querySelector('.product-modal');
+
+    // Récupération des infos du produit
+    const name = card.querySelector('h3')?.textContent || 'Produit';
+    const description = card.querySelector('.description')?.textContent || 'Aucune description disponible.';
+    const image = card.querySelector('img')?.src;
+
+    // Remplissage du modal
+    modal.querySelector('.modal-title').textContent = name;
+    modal.querySelector('.modal-description').textContent = description;
+    modal.querySelector('img').src = image;
+
+    // Afficher le modal
+    modal.style.display = 'flex';
+  });
+});
+
+// Fermer le modal
+document.querySelector('.close-modal').addEventListener('click', () => {
+  document.querySelector('.product-modal').style.display = 'none';
+});
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('product-modal')) {
+    e.target.style.display = 'none';
+  }
+});
+
+
+ 
+    const filterButtons = document.querySelectorAll(".filter-btn");
+const productCards = document.querySelectorAll(".product-card");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const filter = button.getAttribute("data-filter");
+
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    productCards.forEach(card => {
+      if (filter === "all" || card.classList.contains(filter)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+
+
 </script>
-
-
-
-        
-        
-               
 </body>
 </html>
