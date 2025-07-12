@@ -3,7 +3,7 @@ lyjuuuuuuuuuuuuuu4deeeee87<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T-Shirts Collection | Your Brand</title>
+    <title>Tissus Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
  <style>
@@ -815,6 +815,7 @@ lyjuuuuuuuuuuuuuu4deeeee87<!DOCTYPE html>
             <a href="cart.html">🛒 <span class="cart-count">0</span></a>
         </div>
         <div class="mobile-menu-toggle">☰</div>
+        
     </nav>
 
     <!-- HERO SECTION WITH VIDEO BACKGROUND -->
@@ -1377,6 +1378,15 @@ lyjuuuuuuuuuuuuuu4deeeee87<!DOCTYPE html>
 
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".mobile-menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggle.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+    });
+  });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.querySelector('.product-modal');
